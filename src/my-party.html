@@ -1,0 +1,132 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="mini-card.html">
+
+<dom-module id="my-party">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+        max-width: 1152px;
+        margin: 0 auto;
+      }
+      .card-container{
+        display: flex;
+      }
+      .card{
+        margin: 12px 6px;
+        padding: 12px 16px;
+      }
+      .card.2{
+        margin: 0 6px;
+        max-width: 50%;
+      }
+      .card.people{
+        padding: 0;
+        display: flex;
+        overflow-y: auto;
+      }
+      .card party-card{
+        flex-grow: 1;
+      }      
+      h2{
+        margin: 22px 0 0 10px;
+        font-weight: 500;
+        font-size: 16px;
+        color: rgba(0,0,0,0.7)
+      }
+
+
+      @media screen and (max-width: 860px){
+        .card{
+          width: 100%;
+          flex-direction: column;
+        }
+      }
+
+    </style>
+
+    <div class="card-container">
+      <div class="card">
+        <p>The Democratic Action Party, or DAP (Malay: Parti Tindakan Demokratik, Chinese: 民主行动党, Tamil: ஜனநாயக செயல் கட்சி) is a multi-racial, centre-left Malaysian political party advocating social democracy and secularism.</p>
+        <p>Following the 2013 Malaysian general election, the Democratic Action Party (DAP) became Malaysia's largest opposition party, over the two other main opposition parties PKR and PAS, as well as the second largest political party after the ruling UMNO.</p>
+        <p>The party's vision is to establish a peaceful and prosperous social democracy that can unite its disparate races and diverse religions and cultures based on a Malaysian Malaysia concept of forging a Malaysian race grounded on universal moral values, offering equal access and opportunity, upholding democratic governance and the rule of law, creating wealth and distributing it equitably, and fighting corruption.</p>
+        <p>The DAP usually draw much of their support from secular and liberal religious voters with a stable electorate from voters of big cities, coastal regions, professional middle-class, and working class. The party's strongholds include the state of Penang, Perak, Selangor, Negeri Sembilan, Johor and the Federal Territory of Kuala Lumpur. In the 2013 Malaysian general election, DAP contested in 51 federal constituencies and won 38 seats, representing a win rate of 75%, the highest among the major political parties contesting.</p>
+      </div>   
+    </div>
+
+    <h2>People</h2>
+    <div class="card-container">
+      <div class="card people">
+        <template is="dom-repeat" items="{{people}}"> 
+          <mini-card link="{{item.link}}" image="{{item.image}}"
+            title="{{item.name}}" subtitle="{{item.position}}"></mini-card>
+        </template>
+      </div>    
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      get is() {return 'my-party'},
+
+      attached(){
+        this.fire('changeHeaderBackground', {url: 'http://www.therocket.com.my/en/wp-content/uploads/2013/05/IMG_6017.jpg'})
+
+        this.people = [{
+          name: "Lim Kit Siang",
+          position: "Parliamentary Leader",
+          link: "",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lim_Kit_Siang_cropped.jpg/220px-Lim_Kit_Siang_cropped.jpg"
+        },{
+          name: "Tan Kok Wai",
+          position: "Acting National Chairman",
+          link: "",
+          image: "http://www.themalaysiantimes.com.my/wp-content/uploads/2013/11/tan-kok-wai2.jpg"
+        },{
+          name: "M. Kulasegaran",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "http://roketkini.com/wp-content/uploads/2013/06/Kulasegaran.jpg"
+        },{
+          name: "Chow Kon Yeow",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "https://pbs.twimg.com/profile_images/378800000038125209/710a7354461f932da4d2b2c7062d1c04.jpeg"
+        },{
+          name: "Ariffin Omar",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "http://www.roketkini.com/wp-content/uploads/2016/09/Dr-Ariffin.jpg"
+        },{
+          name: "Chong Chieng Jen",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Chong_Chieng_Jen_during_Malaysian_GE_13.jpg/220px-Chong_Chieng_Jen_during_Malaysian_GE_13.jpg"
+        },{
+          name: "Teresa Kok",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "http://www.therocket.com.my/en/wp-content/uploads/2014/06/tTeresa-Ho-leng.jpg"
+        },{
+          name: "Lim Guan Eng",
+          position: "Secretary-General",
+          link: "",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/MALAYSIA_GE13_%288678833148%29.jpg/220px-MALAYSIA_GE13_%288678833148%29.jpg"
+        }]
+      }
+    });
+  </script>
+</dom-module>

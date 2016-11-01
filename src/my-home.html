@@ -1,0 +1,173 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="mini-card.html">
+
+<dom-module id="my-home">
+	<template>
+		<style include="shared-styles">
+			:host {
+				display: block;
+				padding: 10px;
+			}
+			
+			.card {
+				display: flex;
+        overflow-y: auto;
+			}
+
+      .card mini-card{
+        flex-grow: 1;
+      }
+
+      h2{
+        font-size: 16px; 
+        font-weight: 500;
+        max-width: 1152px;
+        margin: -30px auto 0px auto;
+        padding: 0 6px;
+      }
+
+      #firstHeader{
+        color: white; 
+      }
+
+      #subHeader{
+        margin: 22px auto 0 auto;
+        color: rgba(0,0,0,0.7)
+      }
+
+      @media screen and (max-width: 860px){
+        .card{
+          flex-direction: column;
+        }
+      }
+			
+
+		</style>
+
+    <h2 id="firstHeader">Political Parties</h2>
+		<div class="card">
+      <template is="dom-repeat" items="{{party}}">
+          <mini-card link="{{item.link}}" image="{{item.image}}"
+          title="{{item.bmName}}" subtitle="{{item.enName}}"></mini-card> 
+      </template>
+		</div>
+
+    <h2 id="subHeader">People</h2>
+		<div class="card">
+      <template is="dom-repeat" items="{{people}}"> 
+        <mini-card link="{{item.link}}" image="{{item.image}}"
+          title="{{item.name}}" subtitle="{{item.position}}"></mini-card>
+      </template>
+		</div>    
+
+	</template>
+
+	<script>
+    Polymer({
+
+      get is() {return 'my-home';},
+
+      changeBg(){
+        this.fire('changeHeaderBackground', {url: 'http://www.trbimg.com/img-53887b9c/turbine/sns-rt-us-malaysia-crime-20140530-001/2048/2048x1228'})
+      },
+
+      attached(){
+        this.changeBg()
+        this.party = [{
+          bmName: "Barisan Nasional",
+          enName: "National Front",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Barisan_Nasional_Logo.svg/150px-Barisan_Nasional_Logo.svg.png",
+          link: "/party/bn"
+        },{
+          bmName: "Parti Keadilan Rakyat",
+          enName: "People's Justice Party",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Parti_Keadilan_Rakyat_logo.svg/150px-Parti_Keadilan_Rakyat_logo.svg.png",
+          link: "/party/pkr"
+        },{
+          bmName: "Parti Tindakan Demokratik",
+          enName: "Democratic Action Party",
+          image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Democratic_Action_Party_Logo.svg/50px-Democratic_Action_Party_Logo.svg.png",
+          link: "/party/dap"
+        },{
+          bmName: "Parti Islam Se-Malaysia",
+          enName: "Pan-Malaysian Islamic Party",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/PAS_logo.svg/150px-PAS_logo.svg.png",
+          link: "/party/pas"
+        },{
+          bmName: "Parti Reformasi Negeri",
+          enName: "State Reform Party",
+          image: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/State_Reform_Party_logo.jpg/150px-State_Reform_Party_logo.jpg",
+          link: "/party/star"
+        },{
+          bmName: "Barisan Jemaah Islamiah Se-Malaysia",
+          enName: "Pan-Malaysian Islamic Front",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/BERJASA_logo.svg/150px-BERJASA_logo.svg.png",
+          link: "/party/berjasa"
+        }]
+
+        this.people = [{
+          name: "Lim Kit Siang",
+          position: "Parliamentary Leader",
+          link: "",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lim_Kit_Siang_cropped.jpg/220px-Lim_Kit_Siang_cropped.jpg"
+        },{
+          name: "Tan Kok Wai",
+          position: "Acting National Chairman",
+          link: "",
+          image: "http://www.themalaysiantimes.com.my/wp-content/uploads/2013/11/tan-kok-wai2.jpg"
+        },{
+          name: "M. Kulasegaran",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "http://roketkini.com/wp-content/uploads/2013/06/Kulasegaran.jpg"
+        },{
+          name: "Chow Kon Yeow",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "https://pbs.twimg.com/profile_images/378800000038125209/710a7354461f932da4d2b2c7062d1c04.jpeg"
+        },{
+          name: "Ariffin Omar",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "http://www.roketkini.com/wp-content/uploads/2016/09/Dr-Ariffin.jpg"
+        },{
+          name: "Chong Chieng Jen",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Chong_Chieng_Jen_during_Malaysian_GE_13.jpg/220px-Chong_Chieng_Jen_during_Malaysian_GE_13.jpg"
+        },{
+          name: "Teresa Kok",
+          position: "National Vice Chairperson",
+          link: "",
+          image: "http://www.therocket.com.my/en/wp-content/uploads/2014/06/tTeresa-Ho-leng.jpg"
+        },{
+          name: "Lim Guan Eng",
+          position: "Secretary-General",
+          link: "",
+          image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/MALAYSIA_GE13_%288678833148%29.jpg/220px-MALAYSIA_GE13_%288678833148%29.jpg"
+        }]        
+
+      },
+      
+      ready(){
+        var transformContentMargin = () => {
+          this.$.firstHeader.style.opacity = (1.1-window.scrollY/478*3)
+        }
+        transformContentMargin()
+        addEventListener('scroll', transformContentMargin);
+      }      
+    });
+  </script>
+</dom-module>

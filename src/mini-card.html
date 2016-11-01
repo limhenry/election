@@ -1,0 +1,128 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="mini-card">
+	<template>
+		<style>
+			:host {
+				height: 260px;
+				display: block;
+				position: relative;
+				width: 200px;
+				min-width: 200px;
+				text-align: center;
+				padding: 16px 8px;
+				background: #fff;
+				border-right: 1px solid rgba(0, 0, 0, 0.12);
+				border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+			}
+			
+			:host(:hover) {
+				cursor: pointer;
+				background: #fafafa;
+			}
+			
+			:host(:last-child) {
+				border-right: none;
+			}
+			
+			iron-image {
+        width: 80px;
+        height: 80px;        
+				margin: 12px 0;
+				border-radius: 50%;
+			}
+			
+			a {
+				display: block;
+				text-decoration: none;
+			}
+			
+			h2 {
+				font-size: 18px;
+				font-weight: 500;
+				color: rgba(0, 0, 0, 0.85);
+				margin: 4px 0 2px 0;
+				line-height: 20px;
+			}
+			
+			h3 {
+				font-size: 14px;
+				font-weight: 500;
+				color: rgba(0, 0, 0, 0.6);
+				margin: 8px 0 12px 0;
+			}
+			
+			#explore {
+				position: absolute;
+				width: 100%;
+				bottom: 30px;
+				display: block;
+				margin: 32px 0 0 0;
+				color: rgba(0, 0, 0, 0.6);
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 14px;
+				font-weight: 500;
+			}
+      #explore span{
+        vertical-align: middle;
+      }
+      #explore paper-icon-button{
+        width: 36px;
+      }
+      @media screen and (max-width: 860px){
+        :host{
+          padding: 8px 12px;
+          width: auto;
+          height: auto;
+          display: flex;
+        }
+        a{
+          display: flex;
+          align-items: center; 
+          flex-grow: 1;
+        }
+        iron-image{
+          margin: 12px 6px;
+          width: 40px;
+          height: 40px;
+        }
+        .text h2, .text h3{
+          margin: 0 0 0 12px;
+          text-align: left;
+        }
+        #explore{
+          position: relative;
+          margin: auto auto auto auto;
+          bottom: auto;
+          display: flex;
+          max-width: 40px;
+        }
+        #explore span{
+          display: none;
+        }
+      }
+		</style>
+
+		<a href="{{link}}">
+			<iron-image sizing="cover" src="{{image}}"></iron-image>
+      <div class="text">
+			  <h2>{{title}}</h2>
+			  <h3>{{subtitle}}</h3>
+      </div>
+			<a href="{{link}}" id="explore"><span>Explore</span><paper-icon-button icon="arrow-forward"></paper-icon-button></a>
+		</a>
+	</template>
+
+	<script>
+    Polymer({
+			//ES6
+      get is() {return 'mini-card'}
+
+			//non-ES6
+			//is : 'mini-card',
+    });
+  </script>
+</dom-module>
